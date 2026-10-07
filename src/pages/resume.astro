@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { profile, skills, awards, coursework } from '../site';
+
+const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
+const groups = ['Industry', 'Clinic', 'Leadership', 'Research'] as const;
+const groupTitle = { Industry: 'Industry', Clinic: 'Engineering Clinic', Leadership: 'Leadership', Research: 'Research' };
+---
+<Base title="Resume" description={`Resume of ${profile.name}, ${profile.role}.`}>
+  <section class="section">
+    <div class="container resume">
+      <header>
+        <span class="eyebrow">Resume</span>
+        <h1>{profile.name}</h1>
+        <p class="mono muted">{profile.role} · {profile.location} · <a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+        {profile.resumePdf && <a class="btn primary" href={profile.resumePdf}>Download PDF</a>}
+      </header>
+
+      <section>
+        <h2>Education</h2>
+        <div class="item">
+          <div class="row"><h3>Harvey Mudd College</h3><span class="mono muted">Expected May 2027</span></div>
+          <p>B.S. in Engineering, electrical and computer engineering focus</p>
+          <p class="muted small">Coursework: {coursework.join(', ')}</p>
+        </div>
+      </section>
+
+      {groups.map((g) => {
+        const items = experience.filter((e) => e.data.kind === g);
+        return items.length > 0 && (
+          <section>
+            <h2>{groupTitle[g]}</h2>
+            {items.map((e) => (
+              <div class="item">
+                <div class="row">
+                  <h3><a href={`/experience/${e.id}/`}>{e.data.title}, {e.data.org}</a></h3>
+                  <span class="mono muted">{e.data.dates}</span>
+                </div>
+                <p class="muted">{e.data.summary}</p>
+                <ul>{e.data.highlights.map((h) => <li>{h}</li>)}</ul>
+              </div>
+            ))}
+          </section>
+        );
+      })}
+
+      <section>
+        <h2>Awards</h2>
+        <ul class="plain">
+          {awards.map((a) => <li class="row"><span>{a.title}</span><span class="mono muted">{a.year}</span></li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        {skills.map((g) => <p><strong>{g.group}:</strong> {g.items.join(', ')}</p>)}
+      </section>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .resume { max-width: 860px; }
+  header { margin-bottom: 12px; }
+  header .btn { margin-top: 12px; }
+  section > h2 {
+    font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: .12em; color: var(--copper);
+    border-bottom: 1px solid var(--line); padding-bottom: 8px; margin: 40px 0 18px;
+  }
+  .item { margin-bottom: 26px; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .row h3 { margin: 0; }
+  .row h3 a { color: var(--text); }
+  .item p { margin: 4px 0 6px; }
+  .item ul { margin: 6px 0 0; padding-left: 1.2em; }
+  .item li { margin: 4px 0; }
+  .small { font-size: 0.9rem; }
+  .plain { list-style: none; padding: 0; margin: 0; }
+  .plain li { padding: 6px 0; }
+</style>

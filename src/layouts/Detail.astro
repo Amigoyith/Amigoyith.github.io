@@ -1,0 +1,78 @@
+---
+import Base from './Base.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  subtitle?: string;
+  meta?: string[];
+  summary: string;
+  tags?: string[];
+  cover?: ImageMetadata;
+  coverUrl?: string;
+  coverAlt?: string;
+  links?: { label: string; url: string }[];
+  highlights?: string[];
+  back: { href: string; label: string };
+}
+const { title, eyebrow, subtitle, meta = [], summary, tags = [], cover, coverUrl, coverAlt = '', links = [], highlights = [], back } =
+  Astro.props;
+---
+<Base title={title} description={summary}>
+  <article class="container detail">
+    <a class="back mono" href={back.href}>← {back.label}</a>
+    <header>
+      <span class="eyebrow">{eyebrow}</span>
+      <h1>{title}</h1>
+      {subtitle && <p class="subtitle">{subtitle}</p>}
+      {meta.length > 0 && <p class="mono muted">{meta.join('  ·  ')}</p>}
+      <p class="lede">{summary}</p>
+      {tags.length > 0 && <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>}
+      {links.length > 0 && (
+        <div class="actions">
+          {links.map((l) => <a class="btn" href={l.url}>{l.label} ↗</a>)}
+        </div>
+      )}
+    </header>
+
+    {cover ? (
+      <Image class="cover" src={cover} alt={coverAlt} width={1400} />
+    ) : coverUrl ? (
+      <img class="cover" src={coverUrl} alt={coverAlt} />
+    ) : null}
+
+    {highlights.length > 0 && (
+      <section class="highlights" aria-label="Highlights">
+        <h2>Highlights</h2>
+        <ul>{highlights.map((h) => <li>{h}</li>)}</ul>
+      </section>
+    )}
+
+    <div class="prose">
+      <slot />
+    </div>
+
+    <a class="back mono bottom" href={back.href}>← {back.label}</a>
+  </article>
+</Base>
+
+<style>
+  .detail { padding-top: 32px; }
+  .back { display: inline-block; margin-bottom: 28px; color: var(--muted); }
+  .back.bottom { margin-top: 48px; }
+  header { max-width: 760px; }
+  .subtitle { font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; }
+  .lede { font-size: 1.12rem; color: var(--muted); margin-top: 1em; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  header .tags { margin-top: 16px; }
+  .cover { width: 100%; max-height: 520px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); margin: 36px 0 8px; }
+  .highlights {
+    max-width: 760px; margin: 36px 0 8px; padding: 22px 26px;
+    background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius);
+  }
+  .highlights h2 { font-size: 1rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+  .highlights ul { margin: 0; padding-left: 1.1em; }
+  .highlights li { margin: 0.45em 0; }
+</style>

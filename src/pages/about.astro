@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import headshot from '../assets/headshot.jpg';
+import { profile } from '../site';
+---
+<Base title="About">
+  <section class="section">
+    <div class="container about">
+      <div class="side">
+        <Image src={headshot} alt={`Portrait of ${profile.name}`} width={400} />
+      </div>
+      <div class="prose">
+        <span class="eyebrow">About</span>
+        <h1>Hi, I'm Amy.</h1>
+        <p>
+          My legal name is Xiyuan Liu, but most people call me Amy. I'm a senior at
+          <a href="https://www.hmc.edu">Harvey Mudd College</a> studying Engineering with a focus on electrical and
+          computer engineering, and a minor in Philosophy. I'm graduating in May 2027.
+        </p>
+        <p>
+          I like the part of engineering where a design meets the real world: bringing up a new board, chasing down
+          why a clock is radiating, or watching a logic analyzer trace finally line up with the datasheet. From June
+          2025 through August 2026 I was an electrical engineering co-op at RTX Collins Aerospace, where I helped take six avionics
+          display control panels to production release. Right now I'm on an HRL Laboratories clinic team, verifying
+          a RISC-V replacement for the timed processor in a qubit controller.
+        </p>
+        <p>
+          Outside of class and work I lead avionics for the Mudd Amateur Rocketry Club, where I'm writing our first
+          active-control flight computer firmware and teaching new members to build their first rockets.
+        </p>
+        <p>In my free time I make digital art and watch anime.</p>
+        <h2>What I'm looking for</h2>
+        <p>
+          Full-time roles in hardware design, board bring-up, embedded systems or digital verification. If that sounds
+          like your team, <a href={`mailto:${profile.email}`}>send me an email</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+  .side :global(img) { border-radius: 18px; aspect-ratio: 1; object-fit: cover; width: 100%; box-shadow: var(--shadow); position: sticky; top: 90px; }
+  @media (max-width: 760px) { .about { grid-template-columns: 1fr; } .side { max-width: 220px; } }
+</style>

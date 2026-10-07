@@ -1,0 +1,105 @@
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --surface-2: #efede6;
+  --text: #16181d;
+  --muted: #5d6270;
+  --line: #e2dfd6;
+  --accent: #0f766e;        /* solder-mask teal */
+  --accent-soft: #d6efe9;
+  --copper: #b4652a;        /* copper trace */
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+  --radius: 14px;
+  --maxw: 1080px;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1114;
+    --surface: #171a1f;
+    --surface-2: #1e2229;
+    --text: #e8e9ec;
+    --muted: #9aa0ad;
+    --line: #2a2f37;
+    --accent: #3cc7b5;
+    --accent-soft: #123a35;
+    --copper: #e09a5f;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; }
+h2 { font-size: 1.6rem; font-weight: 700; }
+h3 { font-size: 1.1rem; font-weight: 600; }
+p { margin: 0 0 1em; }
+
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+.mono { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.01em; }
+.muted { color: var(--muted); }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--copper);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.section { padding: 56px 0; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.section-head h2 { margin: 0; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 999px;
+  font-weight: 600; font-size: 0.95rem;
+  border: 1px solid var(--line); color: var(--text); background: var(--surface);
+  transition: transform .15s ease, border-color .15s ease;
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+@media (prefers-color-scheme: dark) { .btn.primary { color: #06201d; } }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.tags li {
+  font-family: var(--mono); font-size: 0.72rem;
+  padding: 3px 9px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+}
+
+.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+/* Long-form detail pages */
+.prose { max-width: 760px; }
+.prose h2 { font-size: 1.35rem; margin-top: 2.2em; }
+.prose h3 { margin-top: 1.6em; }
+.prose ul { padding-left: 1.2em; }
+.prose li { margin: 0.3em 0; }
+.prose figure { margin: 2em 0; }
+.prose figure img { border-radius: 10px; border: 1px solid var(--line); background: var(--surface); margin: 0 auto; max-height: 560px; width: auto; }
+.prose figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 0.6em; text-align: center; }
+.prose table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 1.5em 0; }
+.prose th, .prose td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; }
+.prose th { font-weight: 600; }
+.prose code { font-family: var(--mono); font-size: 0.88em; background: var(--surface-2); padding: 1px 5px; border-radius: 5px; }
+.prose blockquote { margin: 1.5em 0; padding: 0.2em 1em; border-left: 3px solid var(--copper); color: var(--muted); }
+.prose iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; margin: 1.5em 0; }

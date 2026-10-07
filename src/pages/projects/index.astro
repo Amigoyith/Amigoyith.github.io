@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Card.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Projects" description="Hardware, FPGA and embedded systems projects by Amy Liu.">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Projects</span>
+      <h1>Things I've built</h1>
+      <p class="muted intro">
+        FPGA logic, microcontroller firmware and the circuits around them. Each page walks through the design,
+        how I tested it, and what I'd change.
+      </p>
+      <div class="grid">
+        {projects.map((p) => (
+          <Card
+            href={`/projects/${p.id}/`}
+            eyebrow={p.data.featured ? 'Featured' : 'Project'}
+            title={p.data.title}
+            meta={p.data.context}
+            summary={p.data.summary}
+            tags={p.data.tags}
+            cover={p.data.cover}
+            coverUrl={p.data.coverUrl}
+            coverAlt={p.data.coverAlt}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro { max-width: 60ch; font-size: 1.08rem; margin-bottom: 36px; }
+</style>

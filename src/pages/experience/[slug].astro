@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from 'astro:content';
+import Detail from '../../layouts/Detail.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('experience');
+  return items.map((e) => ({ params: { slug: e.id }, props: { e } }));
+}
+const { e } = Astro.props;
+const { Content } = await render(e);
+---
+<Detail
+  title={e.data.org}
+  eyebrow={e.data.kind}
+  subtitle={e.data.title}
+  meta={[e.data.dates, e.data.location].filter((x): x is string => Boolean(x))}
+  summary={e.data.summary}
+  tags={e.data.tags}
+  cover={e.data.cover}
+  coverAlt={e.data.coverAlt}
+  highlights={e.data.highlights}
+  back={{ href: '/#experience', label: 'Back to experience' }}
+>
+  <Content />
+</Detail>
