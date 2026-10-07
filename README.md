@@ -1,7 +1,7 @@
 # Amy Liu · Portfolio
 
 Personal portfolio site, built with [Astro](https://astro.build) and deployed to GitHub Pages at
-https://amigoyith.github.io.
+https://xiyuanliuamy.com.
 
 ## Editing content
 
