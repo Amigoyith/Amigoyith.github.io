@@ -16,7 +16,7 @@ links:
 highlights:
   - Authored the UVM-style verification plan for the controller command stream, using tProcV2 as the golden reference for differential testing against RISC-Q.
   - Built SystemVerilog event testbenches at 7 pipeline checkpoints across 3 clock domains in a Verilator simulation of the full design.
-  - Ran SymbiYosys formal checks on the real QICK RTL that measured the command path's exact timing and exposed five corner-case bugs.
+  - Designing SymbiYosys formal verification. The team's formal runs on the real QICK RTL measured the command path's exact timing and exposed five corner-case bugs.
   - Identified capacity, backpressure and reset risks that now shape the design of the RISC-Q adapter.
 ---
 
