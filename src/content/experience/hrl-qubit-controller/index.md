@@ -78,4 +78,8 @@ The WaveWordBridge is the adapter piece that turns RISC-Q's commands into QICK's
 - The queue holds 9 pending pulses, and the 10th is silently dropped. tProcV2 avoids this by stalling its CPU when a queue fills, but RISC-Q's writes are posted, so there's no path back to stall the CPU.
 - Pulse lengths under 3 and out-of-range fields pass straight through or are silently truncated to 16 bits.
 
-For the dropped words I proposed two fixes to the controller team: either assume pulses on a channel never overlap and add a drop flag, or hold words in the queue until they're accepted, the way tProc does, at the cost of one extra cycle of latency (32 → 33). A teammate's formal characterization of QICK's own signal generator and tProc path gives the reference numbers these checks compare against.
+For the dropped words I proposed two fixes to the controller team: either assume pulses on a channel never overlap and add a drop flag, or hold words in the queue until they're accepted, the way tProc does, at the cost of one extra cycle of latency (32 → 33).
+
+## Acknowledgements
+
+Thanks to our HRL Laboratories liaisons Abbie Wessels, Paul Jerger and Jessica Liu, our faculty advisor Benson Tsai, and team lead Julia Gong. Diagrams marked HRL Laboratories are from the liaisons' clinic launch slides.
