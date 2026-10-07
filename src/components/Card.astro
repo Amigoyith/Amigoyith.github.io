@@ -60,7 +60,7 @@ const { href, title, eyebrow, meta, summary, tags = [], cover, coverUrl, coverAl
   }
   .card:hover { text-decoration: none; transform: translateY(-3px); border-color: var(--accent); }
   .media { aspect-ratio: 16 / 9; background: var(--surface-2); overflow: hidden; }
-  .media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .4s ease; }
   .card:hover .media img { transform: scale(1.03); }
   .placeholder { position: relative; width: 100%; height: 100%; color: color-mix(in srgb, var(--accent) 22%, transparent); }
   .placeholder svg { position: absolute; inset: 0; width: 100%; height: 100%; }
