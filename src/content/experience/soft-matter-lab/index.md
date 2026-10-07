@@ -9,6 +9,7 @@ order: 5
 summary: Studied the physics of latch-mediated spring-actuated systems through experiments and simulation, and automated the lab's recoil-motion analysis.
 tags: [MATLAB, Computer vision, High-speed video, Data analysis]
 cover: ./poster.jpg
+coverHref: /files/recoil-poster.pdf
 coverAlt: Research poster, Measuring the High-Rate Large Deformation Recoil of Elastic Materials
 highlights:
   - Automated recoil-motion analysis in MATLAB, tracking elastic-material position with the Computer Vision Toolbox and smoothing the data to characterize energy efficiency.

@@ -19,6 +19,7 @@ const experience = defineCollection({
       tags: z.array(z.string()).default([]),
       cover: image().optional(),
       coverAlt: z.string().optional(),
+      coverHref: z.string().optional(), // makes the cover image a link, e.g. to a full-size PDF
       order: z.number(),
     }),
 });

@@ -13,11 +13,12 @@ interface Props {
   cover?: ImageMetadata;
   coverUrl?: string;
   coverAlt?: string;
+  coverHref?: string;
   links?: { label: string; url: string }[];
   highlights?: string[];
   back: { href: string; label: string };
 }
-const { title, eyebrow, subtitle, meta = [], summary, tags = [], cover, coverUrl, coverAlt = '', links = [], highlights = [], back } =
+const { title, eyebrow, subtitle, meta = [], summary, tags = [], cover, coverUrl, coverAlt = '', coverHref, links = [], highlights = [], back } =
   Astro.props;
 ---
 <Base title={title} description={summary}>
@@ -37,7 +38,12 @@ const { title, eyebrow, subtitle, meta = [], summary, tags = [], cover, coverUrl
       )}
     </header>
 
-    {cover ? (
+    {cover && coverHref ? (
+      <a class="cover-link" href={coverHref} title="Open full size">
+        <Image class="cover" src={cover} alt={coverAlt} width={1400} />
+        <span class="mono">Open full size ↗</span>
+      </a>
+    ) : cover ? (
       <Image class="cover" src={cover} alt={coverAlt} width={1400} />
     ) : coverUrl ? (
       <img class="cover" src={coverUrl} alt={coverAlt} />
@@ -68,6 +74,8 @@ const { title, eyebrow, subtitle, meta = [], summary, tags = [], cover, coverUrl
   .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
   header .tags { margin-top: 16px; }
   .cover { width: 100%; height: auto; max-height: 760px; object-fit: contain; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--line); margin: 36px 0 8px; }
+  .cover-link { display: block; }
+  .cover-link span { display: block; text-align: right; font-size: 0.8rem; color: var(--muted); }
   .highlights {
     max-width: 760px; margin: 36px 0 8px; padding: 22px 26px;
     background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius);
