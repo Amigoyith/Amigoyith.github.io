@@ -71,7 +71,7 @@ export const coursework: { name: string; href?: string }[] = [
   { name: 'Radio Frequency Circuit Design', href: '/projects/rf-circuit-design/' },
   { name: 'Electronic & Magnetic Circuits and Devices' },
   { name: 'Microprocessor Systems: Design & Applications', href: '/projects/microprocessor-systems/' },
-  { name: 'Digital Electronics & Computer Engineering', href: '/projects/multicycle-cpu/' },
+  { name: 'Digital Electronics & Computer Engineering', href: '/projects/circuit-design/multicycle-cpu/' },
   { name: 'Advanced Systems Engineering', href: '/projects/signal-processing/' },
   { name: 'Data Structures & Program Development' },
 ];

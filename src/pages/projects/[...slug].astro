@@ -11,7 +11,10 @@ const { p, projects } = Astro.props;
 const { Content } = await render(p);
 
 // A course page lists its labs as cards; a lab page links back to its course.
-const labs = projects.filter((c) => c.id.startsWith(`${p.id}/`)).sort((a, b) => a.data.order - b.data.order);
+const labs = projects
+  .filter((c) => c.id.startsWith(`${p.id}/`) && !c.id.slice(p.id.length + 1).includes('/'))
+  .sort((a, b) => a.data.order - b.data.order);
+const listTitle = labs.some((l) => l.data.label?.startsWith('Lab')) ? 'Labs' : 'Projects';
 const parentId = p.id.includes('/') ? p.id.slice(0, p.id.lastIndexOf('/')) : null;
 const parent = parentId ? projects.find((c) => c.id === parentId) : null;
 const back = parent
@@ -33,7 +36,7 @@ const back = parent
   <Content />
   {labs.length > 0 && (
     <section class="labs" slot="after">
-      <h2>Labs</h2>
+      <h2>{listTitle}</h2>
       <div class="grid">
         {labs.map((l) => (
           <Card
