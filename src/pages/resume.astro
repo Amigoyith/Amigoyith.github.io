@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { profile, skills, awards, coursework } from '../site';
+import { profile, skills, awards, coursework, credlyBadges } from '../site';
 
 const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
 const groups = ['Industry', 'Clinic', 'Leadership', 'Research'] as const;
@@ -50,8 +50,23 @@ const groupTitle = { Industry: 'Industry', Clinic: 'Engineering Clinic', Leaders
       <section>
         <h2>Awards</h2>
         <ul class="plain">
-          {awards.map((a) => <li class="row"><span>{a.title}</span><span class="mono muted">{a.year}</span></li>)}
+          {awards.map((a) => (
+            <li class="row">
+              {a.href ? <a class="course" href={a.href}>{a.title}</a> : <span>{a.title}</span>}
+              <span class="mono muted">{a.year}</span>
+            </li>
+          ))}
         </ul>
+        {credlyBadges.length > 0 && (
+          <div class="badges">
+            {credlyBadges.map((id) => (
+              <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id={id} data-share-badge-host="https://www.credly.com">
+                <a href={`https://www.credly.com/badges/${id}/public_url`}>View badge on Credly</a>
+              </div>
+            ))}
+            <script is:inline type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
+          </div>
+        )}
       </section>
 
       <section>
@@ -81,4 +96,5 @@ const groupTitle = { Industry: 'Industry', Clinic: 'Engineering Clinic', Leaders
   .course { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); text-underline-offset: 3px; }
   .plain { list-style: none; padding: 0; margin: 0; }
   .plain li { padding: 6px 0; }
+  .badges { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
 </style>

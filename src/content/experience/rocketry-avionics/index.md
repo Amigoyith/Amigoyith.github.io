@@ -12,6 +12,9 @@ highlights:
   - Reduced apogee-detection timing error by about 30% and ran a magnetometer interference study.
   - Wrote a Level 1 rocket design guide for beginners and led build sessions for 60+ students.
   - Team placed 1st, 3rd and 5th at Friends of Amateur Rocketry Unlimited contests (2026, 2025, 2024).
+links:
+  - label: HMC news on the team's FAR results
+    url: https://www.hmc.edu/about/2025/07/28/harvey-mudds-marc-team-successful-at-far-rocketry-competition/
 ---
 
 <!--
