@@ -8,6 +8,8 @@ kind: Clinic
 order: 3
 summary: Member of a Harvey Mudd Clinic team working with the USDA and Auburn University to modernize electropenetograph technology, an instrument entomologists use to study how insects feed on plants.
 tags: [Engineering Clinic, Electronics, Instrumentation]
+cover: ./boards.jpg
+coverAlt: Early prototype boards from the clinic project on the lab bench
 highlights:
   - Worked on the electronics for the team's instrument as part of a sponsored clinic project.
 links:
