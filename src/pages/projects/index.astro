@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Card from '../../components/Card.astro';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const projects = (await getCollection('projects', (p) => !p.id.includes('/'))).sort((a, b) => a.data.order - b.data.order);
 ---
 <Base title="Projects" description="Hardware, FPGA and embedded systems projects by Amy Liu.">
   <section class="section">

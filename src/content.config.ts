@@ -26,11 +26,13 @@ const experience = defineCollection({
 });
 
 const projects = defineCollection({
-  loader: glob({ pattern: '*/index.md', base: './src/content/projects' }),
+  // A course page lives at <course>/index.md; its labs live at <course>/<lab>/index.md.
+  loader: glob({ pattern: '**/index.md', base: './src/content/projects' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
       context: z.string(), // e.g. "Microprocessor Systems (E155), Fall 2024"
+      label: z.string().optional(), // e.g. "Lab 3", shown on a lab's card
       summary: z.string(),
       tags: z.array(z.string()).default([]),
       cover: image().optional(),

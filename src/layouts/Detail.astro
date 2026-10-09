@@ -60,6 +60,8 @@ const { title, eyebrow, subtitle, meta = [], summary, tags = [], cover, coverUrl
       <slot />
     </div>
 
+    <slot name="after" />
+
     <a class="back mono bottom" href={back.href}>← {back.label}</a>
   </article>
 </Base>

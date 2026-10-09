@@ -8,7 +8,7 @@ import { profile, skills } from '../site';
 
 const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
 const featured = (await getCollection('projects'))
-  .filter((p) => p.data.featured)
+  .filter((p) => p.data.featured && !p.id.includes('/'))
   .sort((a, b) => a.data.order - b.data.order);
 
 const stats = [

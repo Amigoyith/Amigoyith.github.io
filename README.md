@@ -10,7 +10,7 @@ Everything you'll usually change is Markdown:
 | What | Where |
 |---|---|
 | Experience (jobs, clinic, leadership, research) | `src/content/experience/<name>/index.md` |
-| Projects | `src/content/projects/<name>/index.md` |
+| Projects (course pages) | `src/content/projects/<course>/index.md`, with each lab in `src/content/projects/<course>/<lab>/index.md` (set `label: Lab 3` and `order`) |
 | Name, links, skills, awards, coursework | `src/site.ts` |
 | Headshot | `src/assets/headshot.jpg` |
 

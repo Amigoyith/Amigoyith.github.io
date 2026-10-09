@@ -1,0 +1,58 @@
+---
+import { getCollection, render } from 'astro:content';
+import Detail from '../../layouts/Detail.astro';
+import Card from '../../components/Card.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((p) => ({ params: { slug: p.id }, props: { p, projects } }));
+}
+const { p, projects } = Astro.props;
+const { Content } = await render(p);
+
+// A course page lists its labs as cards; a lab page links back to its course.
+const labs = projects.filter((c) => c.id.startsWith(`${p.id}/`)).sort((a, b) => a.data.order - b.data.order);
+const parentId = p.id.includes('/') ? p.id.slice(0, p.id.lastIndexOf('/')) : null;
+const parent = parentId ? projects.find((c) => c.id === parentId) : null;
+const back = parent
+  ? { href: `/projects/${parent.id}/`, label: parent.data.title }
+  : { href: '/projects/', label: 'All projects' };
+---
+<Detail
+  title={p.data.title}
+  eyebrow={parent ? `${parent.data.title} · ${p.data.label ?? 'Lab'}` : labs.length > 0 ? 'Course' : 'Project'}
+  meta={[p.data.context]}
+  summary={p.data.summary}
+  tags={p.data.tags}
+  cover={p.data.cover}
+  coverUrl={p.data.coverUrl}
+  coverAlt={p.data.coverAlt}
+  links={p.data.links}
+  back={back}
+>
+  <Content />
+  {labs.length > 0 && (
+    <section class="labs" slot="after">
+      <h2>Labs</h2>
+      <div class="grid">
+        {labs.map((l) => (
+          <Card
+            href={`/projects/${l.id}/`}
+            eyebrow={l.data.label ?? 'Lab'}
+            title={l.data.title}
+            summary={l.data.summary}
+            tags={l.data.tags}
+            cover={l.data.cover}
+            coverUrl={l.data.coverUrl}
+            coverAlt={l.data.coverAlt}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+</Detail>
+
+<style>
+  .labs { margin-top: 40px; }
+  .labs h2 { font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: .12em; color: var(--copper); margin-bottom: 18px; }
+</style>
