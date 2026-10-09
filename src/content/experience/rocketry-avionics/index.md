@@ -39,7 +39,7 @@ Our competition rockets are dual-deploy. A small drogue parachute comes out at a
 
 ## What a flight looks like in the data
 
-This is the log from our 2026 competition flight, recorded by the commercial flight computer in the avionics bay. The motor burns for about five and a half seconds and takes the rocket to 886 ft/s, around Mach 0.8. It then coasts for another 21 seconds to an apogee of about 10,960 ft above the ground, and spends the next eight minutes coming down under parachute at roughly 22 ft/s.
+This is the log from a May 2026 test flight, recorded by the commercial flight computer in the avionics bay. The motor burns for about five and a half seconds and takes the rocket to 886 ft/s, around Mach 0.8. It then coasts for another 21 seconds to an apogee of about 10,960 ft above the ground, and spends the next eight minutes coming down under parachute at roughly 22 ft/s.
 
 ![Barometric and inertial altitude over the whole flight, from liftoff to landing about 500 seconds later](./flight-altitude.png)
 

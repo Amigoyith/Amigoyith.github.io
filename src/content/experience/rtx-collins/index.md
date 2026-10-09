@@ -12,7 +12,7 @@ highlights:
   - Designed a level-shifted JTAG adapter in Altium for Ethernet-card programming and boundary-scan debug. It released first pass with no re-spin, and I led its bring-up, documentation and qualification.
   - Ran DO-160G and MIL-STD environmental qualification with the test technicians. Diagnosed a radiated-emissions failure and fixed it with series damping on a high-speed clock, recovering three weeks of schedule.
   - Authored 450+ hardware requirements and 300+ verification test cases in DOORS, keeping system-to-hardware traceability through five formal PREP reviews.
-  - Modified a circuit card layout and rerouted 10+ signal lines so two display units could undergo radiation beam testing of a replacement flash memory.
+  - Modified a circuit card layout and rerouted 10+ signal lines so two display units could undergo proton-radiation testing of a replacement flash memory.
   - Wrote a PCB quick-turn guide defining design constraints for faster prototyping with less downstream redesign.
   - Received the Display Department Outstanding Employee "Certificate of Excellence" (2026).
 ---
@@ -25,7 +25,7 @@ I joined the avionics display group as a co-op and worked across the hardware li
 
 The panels store their display firmware and configuration in a parallel NOR flash that had gone obsolete, so it needed a replacement. At cruise altitude, high-energy neutrons can flip a bit in memory (a single-event upset) or push a chip into a high-current latch-up that forces a restart. A flipped bit in RAM is usually caught by error correction, but a flipped bit in flash stays there through power cycles. On a cockpit display that could mean corrupted characters or a mislabeled altitude reading that only shows up weeks later.
 
-Beam testing exposes exactly that kind of failure, so the customer required it. I modified a circuit card layout and rerouted more than ten signal lines so two display units could be instrumented for the test. The goal was to confirm that the new part doesn't produce persistent upsets, and that the firmware recovers correctly when one happens.
+Proton beam testing exposes exactly that kind of failure, so the customer required it. I modified a circuit card layout and rerouted more than ten signal lines so two display units could be instrumented for the test. The goal was to confirm that the new part doesn't produce persistent upsets, and that the firmware recovers correctly when one happens.
 
 ## Chasing an EMI failure
 
@@ -48,6 +48,10 @@ One audio-frequency emissions test had a mystery box in its setup. It appeared i
 ## Recognition
 
 In March 2026 the Display Products Engineering group gave me its Certificate of Excellence for helping the team finish qualification testing and submit the flash-update program for certification review.
+
+> "Amy's willingness to challenge opinions when something doesn't make sense showcases her critical thinking and commitment to delivering high-quality work."
+>
+> From my manager's 2025 year-end review
 
 ![Certificate of Excellence from Display Products Engineering, Collins Aerospace](./certificate.jpg)
 
