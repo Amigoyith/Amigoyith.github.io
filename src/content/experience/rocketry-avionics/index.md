@@ -49,7 +49,7 @@ Atlas is that board, still very much a work in progress. It's built around an ST
 - **Links:** a long-range telemetry radio, Bluetooth, USB to a desktop ground-station dashboard, and microSD logging.
 - **Outputs:** eight servo channels for control surfaces and five pyro channels for recovery charges.
 
-Safety is designed in from the start. Every output boots disabled, firing needs a software arm plus a measured armed feed, and each pyro channel gets a fixed number of attempts per power cycle. The first board revision is in bench bring-up now: drivers and host tests are in place, and a bench demo already holds a platform level with four servos. Every subsystem still has to pass physical qualification before it flies.
+Safety is designed in from the start. Every output boots disabled, firing needs a software arm plus a measured armed feed, and each pyro channel gets a fixed number of attempts per power cycle. The first board revision is in bench bring-up now: drivers and host tests are in place, and a fixed bench demo already runs four-servo gravity stabilization. Every subsystem still has to pass physical qualification before it flies.
 
 ## Teaching
 
