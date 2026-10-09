@@ -22,7 +22,9 @@ const groupTitle = { Industry: 'Industry', Clinic: 'Engineering Clinic', Leaders
         <div class="item">
           <div class="row"><h3>Harvey Mudd College</h3><span class="mono muted">Expected May 2027</span></div>
           <p>B.S. in Engineering, electrical and computer engineering focus</p>
-          <p class="muted small">Coursework: {coursework.join(', ')}</p>
+          <p class="muted small">Coursework: {coursework.map((c, i) => (
+            <>{i > 0 && ', '}{c.href ? <a class="course" href={c.href}>{c.name}</a> : c.name}</>
+          ))}</p>
         </div>
       </section>
 
@@ -76,6 +78,7 @@ const groupTitle = { Industry: 'Industry', Clinic: 'Engineering Clinic', Leaders
   .item ul { margin: 6px 0 0; padding-left: 1.2em; }
   .item li { margin: 4px 0; }
   .small { font-size: 0.9rem; }
+  .course { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); text-underline-offset: 3px; }
   .plain { list-style: none; padding: 0; margin: 0; }
   .plain li { padding: 6px 0; }
 </style>

@@ -66,11 +66,12 @@ export const awards = [
   { title: '3rd place, HMC Competitive Programming Qualifier for ICPC', year: '2022, 2023' },
 ];
 
-export const coursework = [
-  'Radio Frequency Circuit Design',
-  'Electronic & Magnetic Circuits and Devices',
-  'Microprocessor Systems: Design & Applications',
-  'Digital Electronics & Computer Engineering',
-  'Advanced Systems Engineering',
-  'Data Structures & Program Development',
+// href links a course to the project page that shows work from it.
+export const coursework: { name: string; href?: string }[] = [
+  { name: 'Radio Frequency Circuit Design', href: '/projects/rf-circuit-design/' },
+  { name: 'Electronic & Magnetic Circuits and Devices' },
+  { name: 'Microprocessor Systems: Design & Applications', href: '/projects/microprocessor-systems/' },
+  { name: 'Digital Electronics & Computer Engineering', href: '/projects/multicycle-cpu/' },
+  { name: 'Advanced Systems Engineering' },
+  { name: 'Data Structures & Program Development' },
 ];

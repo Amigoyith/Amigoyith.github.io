@@ -3,7 +3,7 @@ title: Multicycle Processor
 context: Digital Electronics & Computer Engineering (E85)
 summary: A multicycle processor built from scratch in SystemVerilog, with its own datapath and control state machine.
 tags: [SystemVerilog, CPU design, FSM]
-order: 6
+order: 3
 links:
   - label: Repository
     url: https://github.com/Amigoyith/E85-lab10
