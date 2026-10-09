@@ -72,6 +72,6 @@ export const coursework: { name: string; href?: string }[] = [
   { name: 'Electronic & Magnetic Circuits and Devices' },
   { name: 'Microprocessor Systems: Design & Applications', href: '/projects/microprocessor-systems/' },
   { name: 'Digital Electronics & Computer Engineering', href: '/projects/multicycle-cpu/' },
-  { name: 'Advanced Systems Engineering' },
+  { name: 'Advanced Systems Engineering', href: '/projects/signal-processing/' },
   { name: 'Data Structures & Program Development' },
 ];
