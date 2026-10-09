@@ -1,6 +1,7 @@
 // Turns a paragraph holding only an image into a <figure>, using the
 // image's alt text as the caption. Lets project pages stay plain Markdown:
 //   ![Logic analyzer capture of one SPI read](./images/spi-single.jpg)
+// Several images in one paragraph become a side-by-side row of figures.
 export default function rehypeFigure() {
   return (tree) => visit(tree);
 }
@@ -12,20 +13,25 @@ function visit(node) {
       const kids = child.children.filter(
         (c) => !(c.type === 'text' && c.value.trim() === ''),
       );
-      if (kids.length === 1 && kids[0].type === 'element' && kids[0].tagName === 'img') {
-        const img = kids[0];
-        const caption = img.properties?.alt;
-        return {
-          type: 'element',
-          tagName: 'figure',
-          properties: {},
-          children: caption
-            ? [img, { type: 'element', tagName: 'figcaption', properties: {}, children: [{ type: 'text', value: caption }] }]
-            : [img],
-        };
+      const allImages = kids.length > 0 && kids.every((c) => c.type === 'element' && c.tagName === 'img');
+      if (allImages && kids.length === 1) return figure(kids[0]);
+      if (allImages) {
+        return { type: 'element', tagName: 'div', properties: { className: ['figure-row'] }, children: kids.map(figure) };
       }
     }
     visit(child);
     return child;
   });
+}
+
+function figure(img) {
+  const caption = img.properties?.alt;
+  return {
+    type: 'element',
+    tagName: 'figure',
+    properties: {},
+    children: caption
+      ? [img, { type: 'element', tagName: 'figcaption', properties: {}, children: [{ type: 'text', value: caption }] }]
+      : [img],
+  };
 }

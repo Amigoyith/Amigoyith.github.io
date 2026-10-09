@@ -96,6 +96,10 @@ p { margin: 0 0 1em; }
 .prose li { margin: 0.3em 0; }
 .prose figure { margin: 2em 0; }
 .prose figure img { border-radius: 10px; border: 1px solid var(--line); background: var(--surface); margin: 0 auto; max-height: 560px; width: auto; }
+.figure-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 2em 0; align-items: start; }
+.figure-row figure { margin: 0; }
+.prose figure video { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); background: #000; }
+.note { font-size: 0.92rem; color: var(--muted); }
 .prose figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 0.6em; text-align: center; }
 .prose table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 1.5em 0; }
 .prose th, .prose td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; }
