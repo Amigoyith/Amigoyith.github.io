@@ -1,8 +1,8 @@
 ---
 title: RF Circuit Design
 context: Radio Frequency Circuit Design (E157) · Fall 2026
-summary: Hands-on RF labs where I predict, simulate and then measure the same circuit, and explain every gap with numbers. Transmission line reflections, VNA calibration and a hand-soldered 100 MHz matching network.
-tags: [VNA, Smith chart, Impedance matching, Transmission lines, LTspice, Python]
+summary: Hands-on RF labs where I predict, simulate and then measure the same circuit, and explain every gap with numbers. Transmission line reflections, VNA calibration, a hand-soldered 100 MHz matching network, and calibrated near-field probes for EMC work.
+tags: [VNA, Smith chart, Impedance matching, Transmission lines, EMC, LTspice, Python]
 cover: ./lab-3/images/lmatch-final.jpg
 coverAlt: A hand-soldered L-match and its measured Smith chart
 featured: true
